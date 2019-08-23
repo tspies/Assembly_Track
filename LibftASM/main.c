@@ -43,11 +43,23 @@ void	check_isascii(){
 	printf("   -----------------\n\n");
 }
 
+void check_isalnum(){
+	printf("\n   ----- ISALNUM -----\n");
+	printf("   '%c' should be alnum %d\n", 'Q',ft_isascii('Q'));
+	printf("   '%c' should be alnum %d\n", '7',ft_isascii('7'));
+	printf("   '%c' should be alnum %d\n", 'p',ft_isascii('p'));
+	printf("   '%c' should not be alnum %d\n", '\n',ft_isascii('\n'));
+	printf("   '%c' should not be alnum %d\n", '\t',ft_isascii('\t'));
+	printf("   '%c' should not be alnum %d\n", ' ',ft_isascii(' '));
+
+	printf("   -----------------\n\n");
+}
 int main (void)
 {
 	// Basic Functions
 	check_alpha();
 	check_isdigit();
 	check_isascii();
+	check_isalnum();
 	return 0;
 }

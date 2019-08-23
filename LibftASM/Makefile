@@ -18,7 +18,8 @@ LIBS = -L ./ -lfts
 SRC =	ft_isalpha.s \
 		ft_helloworld.s\
 		ft_isdigit.s\
-		ft_isascii.s
+		ft_isascii.s\
+		ft_isalnum.s
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.s=.o))
 

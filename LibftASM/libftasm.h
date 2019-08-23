@@ -6,4 +6,5 @@ void    ft_helloworld(void);
 int     ft_isalpha(int x);
 int     ft_isdigit(int x);
 int     ft_isascii(int x);
+int     ft_isalnum(int x);
 #endif
