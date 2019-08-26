@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "libftasm.h"
 
 void check_alpha (void)
@@ -45,13 +46,95 @@ void	check_isascii(){
 
 void check_isalnum(){
 	printf("\n   ----- ISALNUM -----\n");
-	printf("   '%c' should be alnum %d\n", 'Q',ft_isascii('Q'));
-	printf("   '%c' should be alnum %d\n", '7',ft_isascii('7'));
-	printf("   '%c' should be alnum %d\n", 'p',ft_isascii('p'));
-	printf("   '%c' should not be alnum %d\n", '\n',ft_isascii('\n'));
-	printf("   '%c' should not be alnum %d\n", '\t',ft_isascii('\t'));
-	printf("   '%c' should not be alnum %d\n", ' ',ft_isascii(' '));
+	printf("   '%c' should be alnum %d\n", 'Q',ft_isalnum('Q'));
+	printf("   '%c' should be alnum %d\n", '7',ft_isalnum('7'));
+	printf("   '%c' should be alnum %d\n", 'p',ft_isalnum('p'));
+	printf("   '%c' should not be alnum %d\n", '#',ft_isalnum('#'));
+	printf("   '%c' should not be alnum %d\n", '%',ft_isalnum('%'));
+	printf("   '%c' should not be alnum %d\n", '}',ft_isalnum('}'));
 
+	printf("   -----------------\n\n");
+}
+
+void check_isprint(){
+	printf("\n   ----- ISPRINT -----\n");
+	printf("   '%c' should be printable %d\n", 33,ft_isprint(33));
+	printf("   '%c' should be printable %d\n", 126,ft_isprint(126));
+	printf("   '%c' should be printable %d\n", 119,ft_isprint(119));
+	printf("   '%c' should  not be printable %d\n", 127,ft_isprint(127));
+	printf("   '%c' should  not be printable %d\n", 0,ft_isprint(0));
+	printf("   '%c' should  not be printable %d\n", 13,ft_isprint(13));
+	printf("   -----------------\n\n");
+}
+void check_toupper(){
+	printf("\n   ----- TOUPPER -----\n");
+	printf("   '%c' upper case is: '%c'\n", 97,ft_toupper(97));
+	printf("   '%c' upper case is: '%c'\n", 100,ft_toupper(100));
+	printf("   '%c' upper case is: '%c'\n", 122,ft_toupper(122));
+	printf("   '%c' upper case is: '%c'\n", 65,ft_toupper(65));
+	printf("   '%c' upper case is: '%c'\n", 126,ft_toupper(126));
+	printf("   '%c' upper case is: '%c'\n", 76,ft_toupper(76));
+
+	printf("   -----------------\n\n");
+
+}
+void check_tolower(){
+	printf("\n   ----- TOLOWER -----\n");
+	printf("   '%c' lower case is: '%c'\n", 97,ft_tolower(97));
+	printf("   '%c' lower case is: '%c'\n", 100,ft_tolower(100));
+	printf("   '%c' lower case is: '%c'\n", 122,ft_tolower(122));
+	printf("   '%c' lower case is: '%c'\n", 65,ft_tolower(65));
+	printf("   '%c' lower case is: '%c'\n", 126,ft_tolower(126));
+	printf("   '%c' lower case is: '%c'\n", 76,ft_tolower(76));
+
+	printf("   -----------------\n\n");
+}
+
+void check_bzero(){
+char string[] = "Zero";
+		printf("\n   ----- BZERO -----\n");
+		for (int i = 0; i < 4; i++){
+		if (string[i] == '\0'){
+			printf("   String index %d is \033[0;32m\033[1mNULL\033[0m\n", i);
+		}
+		else{
+			printf("   String index %d is \033[0;31m\033[1mNOT NULL\033[0m\n", i);
+		}
+	}
+	printf("    \n--- Calling ft_bzero ---\n\n");
+	ft_bzero(string, 4);
+	for (int i = 0; i < 4; i++){
+		if (string[i] == '\0'){
+			printf("   String index %d is \033[0;32m\033[1mNULL\033[0m\n", i);
+		}
+		else{
+			printf("   String index %d is \033[0;31m\033[1mNOT NULL\033[0m\n", i);
+		}
+	}
+
+	printf("   -----------------\n\n");
+
+}
+void	check_strlen(){
+	char string1[] = "Initialized";
+	char string2[] = "great";
+	char string3[] = "s_u_p_e_r_d_u_p_e_r";
+			printf("\n   ----- STRLEN -----\n");
+			printf("   String '%s' is '%zu'.           (%lu)\n", string1, ft_strlen(string1), strlen(string1));
+			printf("   String '%s' is '%zu'.                  (%lu)\n", string2, ft_strlen(string2), strlen(string2));
+			printf("   String '%s' is '%zu'.   (%lu)\n", string3, ft_strlen(string3), strlen(string3));
+			printf("   -----------------\n\n");
+
+
+}
+void	check_strcat(){
+	char stringHalf[] = "Hello ";
+	char stringFull[] = "World!";
+	printf("\n   ----- STRCAT -----\n");
+	printf(" string 1: %s cat with %s", stringHalf, ft_strcat(stringHalf, stringFull));
+	// printf("   String: %s cat with %s == '%s'\n", Half, Full, ft_strcat(Half, Full));
+	// printf("   String: %s cat with %s == '%s'\n", Hello, World, ft_strcat(Hello, World));
+	// printf("   String: %s cat with %s == '%s'\n", Begin, End, ft_strcat(Begin, End));
 	printf("   -----------------\n\n");
 }
 int main (void)
@@ -61,5 +144,11 @@ int main (void)
 	check_isdigit();
 	check_isascii();
 	check_isalnum();
+	check_isprint();
+	check_toupper();
+	check_tolower();
+	check_bzero();
+	check_strlen();
+	check_strcat();
 	return 0;
 }
