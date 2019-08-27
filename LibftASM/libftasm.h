@@ -13,5 +13,6 @@ int     ft_isalnum(int x);
 int     ft_isprint(int x);
 int     ft_toupper(int x);
 int     ft_tolower(int x);
+int     ft_puts(const char *str);
 
 #endif

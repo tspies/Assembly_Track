@@ -128,14 +128,28 @@ void	check_strlen(){
 
 }
 void	check_strcat(){
-	char stringHalf[] = "Hello ";
-	char stringFull[] = "World!";
+	char stringHalf[100] = "Hello ";
+	char *stringFull = "World!";
+	char stringInit[100] = "Initilized";
+	char *stringEnd = ", String";
+	char stringRuby[100] = "R_u_b_y - ";
+	char *stringDuby = "D_u_b_y";
 	printf("\n   ----- STRCAT -----\n");
-	printf(" string 1: %s cat with %s", stringHalf, ft_strcat(stringHalf, stringFull));
-	// printf("   String: %s cat with %s == '%s'\n", Half, Full, ft_strcat(Half, Full));
-	// printf("   String: %s cat with %s == '%s'\n", Hello, World, ft_strcat(Hello, World));
-	// printf("   String: %s cat with %s == '%s'\n", Begin, End, ft_strcat(Begin, End));
+	printf("   String 1: '%s' cat with '%s'\n", stringHalf, stringFull);
+	ft_strcat(stringHalf, stringFull);
+	printf("   == '%s'\n\n", stringHalf);
+	printf("   String 2: '%s' cat with '%s'\n", stringInit, stringEnd);
+	ft_strcat(stringInit, stringEnd);
+	printf("   == '%s'\n\n", stringInit);
+	printf("   String 3: '%s' cat with '%s'\n", stringRuby, stringDuby);
+	ft_strcat(stringRuby, stringDuby);
+	printf("   == '%s'\n", stringRuby);
 	printf("   -----------------\n\n");
+}
+void	check_puts(){
+	char *string = "DEADLY";
+	printf("String: '%s'\n", string);
+	ft_puts(string);
 }
 int main (void)
 {
@@ -150,5 +164,6 @@ int main (void)
 	check_bzero();
 	check_strlen();
 	check_strcat();
+	check_puts();
 	return 0;
 }

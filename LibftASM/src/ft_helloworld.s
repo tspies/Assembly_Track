@@ -6,7 +6,7 @@ _ft_helloworld:
         mov rax, 0x02000004 ;syscall for write function
         mov rdi, 1 ;file handling 1 is std out
         mov rsi, hello ; rsi scratch register for #2 argument to function
-        mov rdx, 13 ; number of bytes dont forget the '\0' character hence 13 bytes instead of 12
+        mov rdx, 13 ; number of bytes dont forget the '\0' character and '\n' 13 bytes instead of 12
         syscall  ;invoke operating system to write
 
         ret

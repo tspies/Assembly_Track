@@ -10,11 +10,11 @@ _ft_strcat:
 string_1_length:            ; LOOP FOR 1ST STRING
     mov al, byte[rdi + rcx] ; al is the register for 8bit char instead of using whole register
     test al, al             ; checking if al char is null which would end 1st string
-    jz prep_s2
+    jz prep_string2
     inc rcx
     jmp string_1_length
     
-prep_s2:
+prep_string2:
     xor r10, r10
 
 cat:                        ; LOOP FOR 2ND STRING
