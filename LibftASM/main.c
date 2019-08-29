@@ -147,11 +147,7 @@ void	check_strcat(){
 	printf("   -----------------\n\n");
 }
 void	check_puts(){
-	char *string = "DEADLY";
-	printf("String: '%s'\n", string);
-	// printf("String: %d", ft_putchar('Q'));
-	ft_putchar("@");
-	printf("String: %c", ft_putchar('Q'));
+	ft_putchar('Q');
 }
 int main (void)
 {
