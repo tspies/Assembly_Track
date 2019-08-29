@@ -14,5 +14,5 @@ int     ft_isprint(int x);
 int     ft_toupper(int x);
 int     ft_tolower(int x);
 int     ft_puts(const char *str);
-
+int     ft_putchar(char c);
 #endif
