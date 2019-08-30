@@ -147,7 +147,26 @@ void	check_strcat(){
 	printf("   -----------------\n\n");
 }
 void	check_puts(){
-	ft_putchar('Q');
+	char str1[100] = "   String 1: QWERTYUIOP";
+	char str2[100]= "   String 2: 1234859604";
+	char str3[100] = "   String 3: @#*&+$^#&#";
+	char str4[100] = "   String 4: QqWwEeRrTt";
+	char str5[100] = "   String 5: = | = | = |";
+	char str6[100] = "   String 6: 1w$^^=++}{{";
+	
+	printf("\n   ----- PUTS ---------\n\n");
+	ft_puts(str1);
+
+	ft_puts(str2);
+
+	ft_puts(str3);
+
+	ft_puts(str4);
+
+	ft_puts(str5);
+
+	ft_puts(str6);
+	ft_puts("\n   ---------------------\n");
 }
 int main (void)
 {

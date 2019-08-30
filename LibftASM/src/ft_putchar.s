@@ -4,14 +4,16 @@ default rel
 section .text
 _ft_putchar:
 	mov byte [rsp - 4], dil
-	mov rax, 0x02000004
-	mov rdi, 1 ; stdout
+        mov rax, 0x02000004
+        mov edi, 1
 	lea rsi, [rsp - 4]
-        mov rdx, 5
+	mov edx, edi
 	syscall
-        mov rdi, 1
+
+        mov rax, 0x02000004
+        mov edi, 1
         lea rsi, [endline]
-        mov rdx, 1
+        mov edx, edi
         syscall
         jmp return
 

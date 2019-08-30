@@ -5,13 +5,18 @@ default rel             ; default 32 addressing
 
 section .text
 _ft_puts:
-        cmp rdi, 0
-        jz return
+        mov rcx, rdi
+        call _ft_strlen
+        mov rdi, 1
+        mov rdx, rax
+        mov rax, 0x02000004
+        mov rsi, rcx
+        syscall
 
         mov rax, 0x02000004
-        mov rdi, 1
-        mov rsi, out_message
-        mov rdx, 6
+        mov edi, 1
+        lea rsi, [endline]
+        mov edx, edi
         syscall
         jmp return
 
@@ -19,4 +24,4 @@ return:
         ret
 
 section .data
-out_message: db "NULLY", 10, 0
+endline: db 0x0a
