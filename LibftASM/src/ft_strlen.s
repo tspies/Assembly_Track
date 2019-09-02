@@ -1,15 +1,17 @@
 global _ft_strlen
 _ft_strlen:
-    push rcx        ;preserve rcx
     xor rcx, rcx
-next:
-    cmp [rdi], byte 0 ;this checks if current char is null byte yet
+    test rdi, rdi
     jz return
-    inc rcx
-    inc rdi
-    jmp next
+
+next:
+    mov al, 0x0
+    mov rcx, -1
+    cld
+    repne scasb
+    not rcx
+    dec rcx
 
 return:
     mov rax, rcx
-    pop rcx         ;pop rcx else code will break
     ret

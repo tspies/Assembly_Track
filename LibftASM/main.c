@@ -115,18 +115,6 @@ char string[] = "Zero";
 	printf("   -----------------\n\n");
 
 }
-void	check_strlen(){
-	char string1[] = "Initialized";
-	char string2[] = "great";
-	char string3[] = "s_u_p_e_r_d_u_p_e_r";
-			printf("\n   ----- STRLEN -----\n");
-			printf("   String '%s' is '%zu'.           (%lu)\n", string1, ft_strlen(string1), strlen(string1));
-			printf("   String '%s' is '%zu'.                  (%lu)\n", string2, ft_strlen(string2), strlen(string2));
-			printf("   String '%s' is '%zu'.   (%lu)\n", string3, ft_strlen(string3), strlen(string3));
-			printf("   -----------------\n\n");
-
-
-}
 void	check_strcat(){
 	char stringHalf[100] = "Hello ";
 	char *stringFull = "World!";
@@ -153,6 +141,8 @@ void	check_puts(){
 	char str4[100] = "   String 4: QqWwEeRrTt";
 	char str5[100] = "   String 5: = | = | = |";
 	char str6[100] = "   String 6: 1w$^^=++}{{";
+	char *str7 = NULL;
+	char *str8 = NULL;
 	
 	printf("\n   ----- PUTS ---------\n\n");
 	ft_puts(str1);
@@ -166,8 +156,34 @@ void	check_puts(){
 	ft_puts(str5);
 
 	ft_puts(str6);
+
+	ft_puts("   Testing Null:");
+	ft_puts(NULL);
+	ft_puts(str7);
+	ft_puts(str8);
 	ft_puts("\n   ---------------------\n");
+
 }
+
+void	check_strlen(){
+	char *str1 = "QWERT";
+	char *str2= "1234859604";
+	char *str3 = "@#*&+$^#";
+	char *str4 = "Qq";
+	char *str5 = "= | = | = |";
+	char *str6 = "1w$^^=++}";
+
+	printf("\n   ----- STRLEN ---------\n\n");
+	printf("   String: '%s' is [%d] --> ft_strlen[%zu]\n", str1,  5, ft_strlen(str1));
+	printf("   String: '%s' is [%d] --> ft_strlen[%zu]\n", str2,  10, ft_strlen(str2));
+	printf("   String: '%s' is [%d] --> ft_strlen[%zu]\n", str3,  8, ft_strlen(str3));
+	printf("   String: '%s' is [%d] --> ft_strlen[%zu]\n", str4,  2, ft_strlen(str4));
+	printf("   String: '%s' is [%d] --> ft_strlen[%zu]\n", str5,  11, ft_strlen(str5));
+	printf("   String: '%s' is [%d] --> ft_strlen[%zu]\n", str6,  9, ft_strlen(str6));
+	printf("\n   ---------------------\n");
+
+}
+
 int main (void)
 {
 	// Basic Functions
@@ -182,5 +198,6 @@ int main (void)
 	check_strlen();
 	check_strcat();
 	check_puts();
-	return 0;
+	// Less Basic Functions
+	check_strlen();
 }
