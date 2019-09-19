@@ -4,6 +4,7 @@
 
 size_t  ft_strlen(const char *str);
 char *  ft_strcat(char *s1, const char *s2);
+void *	ft_memset(void *dest, int c, size_t n);
 void    ft_helloworld(void);
 void    ft_bzero(void *s, size_t n);
 int     ft_isalpha(int x);

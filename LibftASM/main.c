@@ -184,6 +184,34 @@ void	check_strlen(){
 
 }
 
+void	check_memset(){
+	char string1[20] = "This is a string";
+	char string2[20] = "Also a string";
+	char string3[20] = "Working Memset";
+	char string4[20]= "Breaks string";
+	char string5[20] = "Assembly memset test";
+	char string6[20] = "Last string";
+	printf("\n   ----- MEMSET ---------\n\n");
+	printf("   String1:      [%s]\n", string1);
+	printf("   String1:  after memset with '%d' chars of '%c' == '%s\n\n", 15 , '@',ft_memset(string1, '@', 15*sizeof(char)));
+	 
+	printf("   String2:      [%s]\n", string2);
+	printf("   String2:  after memset with '%d' chars of '%c' == '%s'\n\n", 4 , '+',ft_memset(string2, '+', 4*sizeof(char)));
+
+	printf("   String3:      [%s]\n", string3);
+	printf("   String3:  after memset with '%d' chars of '%c' == '%s'\n\n", 9 , '0',ft_memset(string3, '0', 9*sizeof(char)));
+
+	printf("   String4:      [%s]\n", string4);
+	printf("   String4:  after memset with '%d' chars of '%c' == '%s'\n\n", 3 , '*',ft_memset(string4, '*', 3*sizeof(char)));
+
+	printf("   String5:      [%s]\n", string5);
+	printf("   String5:  after memset with '%d' chars of '%c' == '%s'\n\n", 10 , 'X',ft_memset(string5, 'X', 10*sizeof(char)));
+
+	printf("   String6:      [%s]\n", string6);
+	printf("   String6:  after memset with '%d' chars of '%c' == '%s'\n\n",  7 , '#',ft_memset(string6, '#', 7*sizeof(char)));
+	printf("\n   ---------------------\n");
+}
+
 int main (void)
 {
 	// Basic Functions
@@ -200,4 +228,5 @@ int main (void)
 	check_puts();
 	// Less Basic Functions
 	check_strlen();
+	check_memset();
 }
