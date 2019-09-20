@@ -135,32 +135,26 @@ void	check_strcat(){
 	printf("   -----------------\n\n");
 }
 void	check_puts(){
-	char str1[100] = "   String 1: QWERTYUIOP";
-	char str2[100]= "   String 2: 1234859604";
-	char str3[100] = "   String 3: @#*&+$^#&#";
-	char str4[100] = "   String 4: QqWwEeRrTt";
-	char str5[100] = "   String 5: = | = | = |";
-	char str6[100] = "   String 6: 1w$^^=++}{{";
-	char *str7 = NULL;
-	char *str8 = NULL;
+	char strg1[100] = "   String 1: QWERTYUIOP";
+	char strg2[100]= "   String 2: 1234859604";
+	char strg3[100] = "   String 3: @#*&+$^#&#";
+	char strg4[100] = "   String 4: QqWwEeRrTt";
+	char strg5[100] = "   String 5: = | = | = |";
+	char strg6[100] = "   String 6: 1w$^^=++}{{";
+	char *strg7 = NULL;
+	char *strg8 = NULL;
 	
 	printf("\n   ----- PUTS ---------\n\n");
-	ft_puts(str1);
-
-	ft_puts(str2);
-
-	ft_puts(str3);
-
-	ft_puts(str4);
-
-	ft_puts(str5);
-
-	ft_puts(str6);
-
+	ft_puts(strg1);
+	ft_puts(strg2);
+	ft_puts(strg3);
+	ft_puts(strg4);
+	ft_puts(strg5);
+	ft_puts(strg6);
 	ft_puts("   Testing Null:");
 	ft_puts(NULL);
-	ft_puts(str7);
-	ft_puts(str8);
+	ft_puts(strg7);
+	ft_puts(strg8);
 	ft_puts("\n   ---------------------\n");
 
 }
@@ -226,6 +220,7 @@ int main (void)
 	check_strlen();
 	check_strcat();
 	check_puts();
+
 	// Less Basic Functions
 	check_strlen();
 	check_memset();
