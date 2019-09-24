@@ -206,6 +206,31 @@ void	check_memset(){
 	printf("\n   ---------------------\n");
 }
 
+void	check_memcpy(){
+	char string1[20] = "This is a string";
+	char string2[20] = "Also a string";
+	char string3[20] = "Working Memcpy";
+	char string4[20]= "Breaks string";
+	char string5[20] = "Assembly memset test";
+	char string6[20] = "Last string";
+	printf("\n   ----- MEMSET ---------\n\n");
+	printf("   String1: [%s] || String:2 [%s]\n", string1, string2);
+	printf("   After memcpy with '%d' chars of '%s' into '%s'\n", 4 , string2, string1);
+	ft_memcpy(string1, string2, 4*sizeof(char));
+	printf("   String1: [%s] || String:2 [%s]\n\n", string1, string2);
+
+	 
+	printf("   String3: [%s] || String:4 [%s]\n", string3, string4);
+	printf("   After memcpy with '%d' chars of '%s' into '%s'\n", 10 , string4, string3);
+	ft_memcpy(string3, string4, 10*sizeof(char));
+	printf("   String3: [%s] || String:4 [%s]\n\n", string3, string4);
+
+	printf("   String5: [%s] || String:6 [%s]\n", string5, string6);
+	printf("   After memcpy with '%d' chars of '%s' into '%s'\n", 9 , string6, string5);
+	ft_memcpy(string5, string6, 9*sizeof(char));
+	printf("   String5: [%s] || String:6 [%s]\n\n", string5, string6);
+	printf("\n   ---------------------\n");
+}
 int main (void)
 {
 	// Basic Functions
@@ -224,4 +249,5 @@ int main (void)
 	// Less Basic Functions
 	check_strlen();
 	check_memset();
+	check_memcpy();
 }

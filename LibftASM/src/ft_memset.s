@@ -4,9 +4,6 @@ global _ft_memset
 ; RSI will take the character to move into al
 ; RDX will take the size_t of how many bytes to copy.
 
-extern _ft_putchar
-extern _ft_puts
-
 section .text
 _ft_memset:
 	push rbp		; These two lines are needed else te stack pointer is not returned to rsp
@@ -15,7 +12,7 @@ _ft_memset:
 
 	push rdi		; This preservs rdi before the cmp command, aftly first!!
 	cmp rdi, 0x0	; Compare rdi with 0 to check if its NULL
-	jz return		; I f it is NULL return
+	jz return		; Jump if it is NULL return
 
 	mov rax, rsi	; moving chracter from rsi to rax or "al" register
 	mov rcx, rdx	; moving size_t from rdx to rcx "general counter register."

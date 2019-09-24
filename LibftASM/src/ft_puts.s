@@ -7,7 +7,7 @@ extern _ft_strlen
 default rel             ; default 32 addressing
 
 section .data
-endline: db 0x0a
+NEWLN db 0x0a
 null_message: db "(null)", 10
 
 section .text
@@ -31,35 +31,26 @@ _ft_puts:
         ; mov rax, 0
 		
         ; ret
-		push rbp
-		mov rbp, rsp
 
-		cmp rdi, 0x0
-        je null_return
-		xor rcx, rcx
-		mov rbx, rdi
+		cmp rdi, 0
+		je null_return
 
-run:
-		cmp BYTE [rbx], 0
-		je print
-		inc rbx
-		inc rcx
-		jmp run
+		push rdi
+		call _ft_strlen
 
-print:
-		mov rsi, rdi
 		mov rdi, 1
-		mov rdx, rcx
-		mov rax, 0x20000004
+		pop rsi
+		mov rdx, rax
+		mov rax, 1
 		syscall
 
-		mov rax, 0x2000004
-        lea rsi, [rel endline]
-        mov edx, 1
-        syscall
-        mov rax, 0
-		leave
-        ret
+		mov rdi, 1
+		mov rsi, NEWLN
+		mov rdx, 1
+		mov rax, 1
+		syscall
+
+		ret
 
 null_return:
 	
@@ -72,7 +63,7 @@ null_return:
 
         mov rax, 1
         mov rdi, 1
-        lea rsi, [rel endline]
+        lea rsi, [rel NEWLN]
         mov edx, edi
         syscall
         mov rax, -1

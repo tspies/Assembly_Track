@@ -5,7 +5,7 @@ _ft_strlen:
     jz return
 
 next:
-    mov al, 0x0
+    xor al, al
     mov rcx, -1
     cld
     repne scasb
