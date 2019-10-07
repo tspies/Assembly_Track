@@ -202,7 +202,7 @@ void	check_memset(){
 	printf("   String5:  after memset with '%d' chars of '%c' == '%s'\n\n", 10 , 'X',ft_memset(string5, 'X', 10*sizeof(char)));
 
 	printf("   String6:      [%s]\n", string6);
-	printf("   String6:  after memset with '%d' chars of '%c' == '%s'\n\n",  7 , '#',ft_memset(string6, '#', 7*sizeof(char)));
+	printf("   String6:  after memset with '%d' chars of '%c' == '%s'\n",  7 , '#',ft_memset(string6, '#', 7*sizeof(char)));
 	printf("\n   ---------------------\n");
 }
 
@@ -213,7 +213,7 @@ void	check_memcpy(){
 	char string4[20]= "Breaks string";
 	char string5[20] = "Assembly memset test";
 	char string6[20] = "Last string";
-	printf("\n   ----- MEMSET ---------\n\n");
+	printf("\n   ----- MEMCPY ---------\n\n");
 	printf("   String1: [%s] || String:2 [%s]\n", string1, string2);
 	printf("   After memcpy with '%d' chars of '%s' into '%s'\n", 4 , string2, string1);
 	ft_memcpy(string1, string2, 4*sizeof(char));
@@ -228,8 +228,34 @@ void	check_memcpy(){
 	printf("   String5: [%s] || String:6 [%s]\n", string5, string6);
 	printf("   After memcpy with '%d' chars of '%s' into '%s'\n", 9 , string6, string5);
 	ft_memcpy(string5, string6, 9*sizeof(char));
-	printf("   String5: [%s] || String:6 [%s]\n\n", string5, string6);
+	printf("   String5: [%s] || String:6 [%s]\n", string5, string6);
 	printf("\n   ---------------------\n");
+}
+
+void	check_strdup(){
+	char string1[20] = "This is a string";
+	char *string1dup = NULL;
+	char string2[20] = "Assembly Strdup test";
+	char *string2dup = NULL;
+	char string3[20] = "Also a string";
+	char *string3dup = NULL;
+	printf("\n   ----- STRDUP ---------\n\n");
+	printf("   Before Strdup --- String1: [%s] || String1dup [%s]\n", string1, string1dup);
+	// string1dup = strdup(string1);
+	string1dup = ft_strdup(string1);
+	printf("   After Strdup  --- String1: [%s] || String1dup [%s]\n\n", string1, string1dup);
+	printf("   Before Strdup --- String2: [%s] || String2dup [%s]\n", string2, string2dup);
+	// string2dup = strdup(string2);
+	string2dup = ft_strdup(string2);
+	printf("   After Strdup  --- String2: [%s] || String2dup [%s]\n\n", string2, string2dup);
+	printf("   Before Strdup --- String3: [%s] || String3dup [%s]\n", string3, string3dup);
+	// string3dup = strdup(string3);
+	string3dup = ft_strdup(string3);
+	printf("   After Strdup  --- String3: [%s] || String3dup [%s]\n", string3, string3dup);
+	printf("\n   ---------------------\n");
+}
+void	check_cat(){
+
 }
 int main (void)
 {
@@ -250,4 +276,8 @@ int main (void)
 	check_strlen();
 	check_memset();
 	check_memcpy();
+	check_strdup();
+
+	// Advanced Functions
+	check_cat();
 }

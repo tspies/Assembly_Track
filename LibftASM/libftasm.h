@@ -4,6 +4,8 @@
 
 size_t  ft_strlen(const char *str);
 char *  ft_strcat(char *s1, const char *s2);
+char *	ft_strcpy(char *dest, char const *src);
+char *  ft_strdup(const char *src);
 void *	ft_memset(void *dest, int c, size_t n);
 void *	ft_memcpy(void *s1, const void *s2, size_t n);
 void    ft_helloworld(void);
