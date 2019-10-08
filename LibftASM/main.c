@@ -143,20 +143,28 @@ void	check_puts(){
 	char strg4[100] = "   String 4: QqWwEeRrTt";
 	char strg5[100] = "   String 5: = | = | = |";
 	char strg6[100] = "   String 6: 1w$^^=++}{{";
-	char *strg7 = NULL;
-	char *strg8 = NULL;
 	
 	printf("\n   ----- PUTS ---------\n\n");
 	ft_puts(strg1);
+	printf("\n");
 	ft_puts(strg2);
+	printf("\n");
 	ft_puts(strg3);
+	printf("\n");
 	ft_puts(strg4);
+	printf("\n");
 	ft_puts(strg5);
+	printf("\n");
 	ft_puts(strg6);
-	ft_puts("   Testing Null:");
+	printf("\n");
+	ft_puts("   Testing Null: ");
 	ft_puts(NULL);
-	ft_puts(strg7);
-	ft_puts(strg8);
+	printf("\n");
+	ft_puts("   Testing Null: ");
+	ft_puts(NULL);
+	printf("\n");
+	ft_puts("   Testing Null: ");
+	ft_puts(NULL);
 	ft_puts("\n   ---------------------\n");
 
 }
@@ -276,14 +284,6 @@ void	check_cat(){
 	close(fd);
 	printf("\n   ---------------------\n");
 }
-// void	check_createfile(){
-// 	printf("\n   ----- CREATE FILE ---------\n\n");
-// 	ft_createfile();
-// 	printf("\n   ---------------------\n");
-// }
-// void	check_file(){
-// 	ft_file();
-// }
 int main (void)
 {
 	// Basic Functions
@@ -309,6 +309,5 @@ int main (void)
 	check_cat();
 
 	// Random Functions
-	// check_createfile();
-	// check_file();
+	
 }

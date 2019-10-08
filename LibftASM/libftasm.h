@@ -25,5 +25,6 @@
     int     ft_tolower(int x);
     int     ft_putchar(char c);
     int     ft_puts(const char *str);
+    int     ft_indexof(char *str, int x);
 
 #endif
