@@ -31,7 +31,10 @@ SRC =	ft_isalpha.s \
 		ft_memset.s\
 		ft_memcpy.s\
 		ft_strdup.s\
-		ft_strcpy.s
+		ft_strcpy.s\
+		ft_createfile.s\
+		ft_file.s\
+		ft_cat.s
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.s=.o))
 
@@ -56,6 +59,8 @@ re: fclean all
 
 test: $(OBJ) main.c
 	$(CC) main.c $(LIBS) -o $(NAME_TEST)
+
+go: fclean all test clean
 
 clean_test:
 	/bin/rm -f $(NAME_TEST)

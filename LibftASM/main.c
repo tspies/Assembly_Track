@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "libftasm.h"
 
 void check_alpha (void)
@@ -255,8 +257,33 @@ void	check_strdup(){
 	printf("\n   ---------------------\n");
 }
 void	check_cat(){
-
+	int fd;
+	char file1[50] = "src/cat_tests/testfile1.txt";
+	char file2[50] = "src/cat_tests/testfile2.txt";
+	char file3[50] = "src/cat_tests/testfile3.txt";
+	printf("\n   ----- CREATE FILE ---------\n\n");
+	printf("   Testing file 1:\n");
+	fd = open(file1, O_RDONLY);
+	ft_cat(fd);
+	close(fd);
+	printf("\n\n   Testing file 2:\n");
+	fd = open(file2, O_RDONLY);
+	ft_cat(fd);
+	close(fd);
+	printf("\n\n   Testing file 3:\n");
+	fd = open(file3, O_RDONLY);
+	ft_cat(fd);
+	close(fd);
+	printf("\n   ---------------------\n");
 }
+// void	check_createfile(){
+// 	printf("\n   ----- CREATE FILE ---------\n\n");
+// 	ft_createfile();
+// 	printf("\n   ---------------------\n");
+// }
+// void	check_file(){
+// 	ft_file();
+// }
 int main (void)
 {
 	// Basic Functions
@@ -280,4 +307,8 @@ int main (void)
 
 	// Advanced Functions
 	check_cat();
+
+	// Random Functions
+	// check_createfile();
+	// check_file();
 }

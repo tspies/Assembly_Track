@@ -1,11 +1,10 @@
-section .text
 global _ft_strcpy
 
 ; char * (char * dst, const char * src)
 ;                 |                 |
 ;                 v                 v
 ;                rdi               rsi
-
+section .text
 _ft_strcpy:
     mov     r8,     rdi
     or      r8,     rsi ; if (!s1 && !s2)
@@ -14,7 +13,7 @@ _ft_strcpy:
     mov     rax,    rdi
 
 cpy:
-    lscmp     byte [rsi],  0
+    cmp     byte [rsi],  0
     je      end
     mov     r8,     [rsi]
     mov     [rdi],  r8b
