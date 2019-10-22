@@ -1,0 +1,23 @@
+ If you cat the level06.php you will see that the file has two functions 'x' and 'y'
+Function y is just a dummy function so forget that.
+Fucntion 'x' is the one we will look at.
+
+Function has two parameters ($y, $z)
+The 'file_get_contents' function will retrieve the contents of a file, we will use thsi fuction to read the code in our exploit file we will create later.
+
+Now lets take a look at the first 'preg_replace', notice that its first argument looks for the string [x(.*)].
+We will exploit this preg_replace using the '/e' in the first argument of preg_replace.
+
+The '/e' will execute the second argument of the preg_replace as a php expression.
+Now we can create our exploit file called 'injection' in /tmp/
+
+Now in our file we write: echo '[x {${system(sh)}}]'
+This will inject the 'system' executable and run a shell (sh).
+
+Now run the ./level06 /tmp/injection
+
+Now once our shell is running we can execute the 'getflag' command and retrieve our flag.
+
+FLAG: wiok45aaoguiboiki2tuin6ub
+
+SUPER SECRET RESOURCE: https://0x00sec.org/t/how-to-pwned-nebula-level09-php-preg-replace/812

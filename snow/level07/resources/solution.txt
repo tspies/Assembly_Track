@@ -1,0 +1,3 @@
+Set lognam as "$LOGNAME:'&&getflag'"
+
+FLAG: fiumuikeil55xe9cu4dood66h 
