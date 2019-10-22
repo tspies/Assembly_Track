@@ -1,0 +1,18 @@
+level05
+
+There is nothing in the level05 folder so we search the root for files owned by user flag05
+find / -user "level05" |& grep -v "Permission denied"
+
+we find that there is a file /usr/sbin/openarenaserver which is owned by user flag05
+
+this file contains a script that loops through all files in folder /opt/openarenaserver, runs them and then deletes them after
+
+we go into /opt/openarenaserver and realise that the file we create in it disappear after a few seconds
+this is because the script in /usr/sbin/openarenaserver is run using cronjobs
+
+the exploit here is we should run getflag in /opt/openarenaserver which is run by the cronjobs
+
+in /opt/openarenaserver we insert a script with the following
+/bin/getflag >> /tmp/myflag.txt
+
+we wait a few seconds for the cronjob and sure enough our script dissapears and in /tmp.myflag.txt there are new contents with our flag

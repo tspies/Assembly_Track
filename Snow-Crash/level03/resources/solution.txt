@@ -1,0 +1,27 @@
+Run the executable with ltrace:
+
+ltrace ./level03
+
+Closer look shows that it looks for the the `echo` exexcutable using the `env` variable.
+
+The `env` searches the enviroment vairable $(PATH) for the executable found in (/user/bin/ )
+
+So now we know that the program looks for an executable in /user/bin/ name `echo` using the default $PATH variable.
+
+We now recreate the program level03 using the ltrace as reference. create this new program in the /tmp folder with vim.
+We call this program echo.c, everything about this program is the same as level03 but we change the path to look for the 
+executable `getflag` instead of `echo`
+
+After this is done in /tmp, we compile the program and name the executable `echo`
+
+
+
+So now we have a duplicate executable named `echo` in the tmp folder.
+
+Now we modify the $PATh variable:
+"export PATH=/tmp/:${PATH}"
+This now adds /tmp as a path that the level03 will look in for an executable called `echo`. becuase we have created our own executable called `echo`, it will run and call the executable get flag, which will show us the flag.
+
+now we go back to the level03 executable and run it, it will call our executable in /tmp and will call the getflag executable.
+
+FLAG: qi0maab88jeaj46qoumi7maus
