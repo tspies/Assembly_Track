@@ -1,0 +1,4 @@
+* Copy the exexcutable `cat` into tmp
+* Rename `cat` to `ls`
+* export PATH cariable to tmp : "export PATH='/tmp'"
+* run the `ch11` program : ./ch11 
