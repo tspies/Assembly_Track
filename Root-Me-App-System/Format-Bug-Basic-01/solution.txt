@@ -6,4 +6,4 @@ $(python -c 'print "%04x."*5')
 * Take the output and copt paste it into a little endian to Big endian converter.
 * Now take the Big Endian output and run it through a hex to ascii converter.
 
-* there should only be certain characters that are normal ascii, others will be gibberish.
+* There should only be certain characters that are normal ascii, others will be gibberish.
