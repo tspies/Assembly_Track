@@ -1,0 +1,23 @@
+su level02
+password is flag from flag01
+
+* In root of level02 there is a file level02.pcap
+
+* We run it through cloudshark.org
+
+ *line 42: contains password:
+
+  every character sent afterwards reveals
+
+  ft_wandr...NDRel.L0L.....
+
+        66 74 5f 77 61 6e 64 72
+        7f 7f 7f 4e 44 52 65 6c 
+        7f 4c 30 4c 0d 00 0d 0a 01
+
+   but characters 7f = 127 which is DEL
+
+   therefore answer is
+
+   ft_waNDReL0L
+
