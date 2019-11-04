@@ -1,6 +1,6 @@
-in level 10 we are again given an executible and a token file we cannot access
+In level 10 we are again given an executible and a token file we cannot access
 
-upon inspection we see that the executible requires two arguments namely a file and a host;
+Upon inspection we see that the executible requires two arguments namely a file and a host;
 The executible sends the file via tcp to the host
 We run an ltrace on the executible and realise that it calls the function 'access' to check if the file is accessible to the user(using the effective UID and GID)
 

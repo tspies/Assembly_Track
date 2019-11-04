@@ -1,3 +1,2 @@
-Set lognam as "$LOGNAME:'&&getflag'"
-
-FLAG: fiumuikeil55xe9cu4dood66h 
+* Set lognam as "$LOGNAME:'&&getflag'"
+* The run the executable

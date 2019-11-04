@@ -7,6 +7,6 @@ The script also accepts a parameter 'x' wich it runs through a subroutine that e
 The exploit here is that this prints out the parameter input directly without hashing or verifying input;
 Theoretically if we pass `getflag` as the x parameter it should be run as a command
 
-we curl the webpage served by CGI on the supplied port 4747
-curl 'localhost:4747/level04.pl?x=`getflag`' and voila we get the flag.
+We curl the webpage served by CGI on the supplied port 4747 with the command:
+	curl 'localhost:4747/level04.pl?x=`getflag`' and voila we get the flag.
 
