@@ -32,8 +32,6 @@ SRC =	ft_isalpha.s \
 		ft_memcpy.s\
 		ft_strdup.s\
 		ft_strcpy.s\
-		ft_createfile.s\
-		ft_file.s\
 		ft_cat.s
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.s=.o))
@@ -46,21 +44,21 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.s=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
 test: $(OBJ) main.c
-	$(CC) main.c $(LIBS) -o $(NAME_TEST)
+	@$(CC) main.c $(LIBS) -o $(NAME_TEST)
 
 go: fclean all test clean
 
 clean_test:
-	/bin/rm -f $(NAME_TEST)
+	@/bin/rm -f $(NAME_TEST)
