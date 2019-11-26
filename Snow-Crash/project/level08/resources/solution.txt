@@ -1,0 +1,14 @@
+Make a symlink between 'token' and a file in /tmp/
+
+ln -s /home/user/level08/token /tmp/level08
+
+Once that is done, run the executable with that file as a parameter.
+
+./level08 /tmp/level8
+
+TOKEN: qui5eloekouj29ke0vouxean
+
+Use the token to log into flag08 and run the getflag command
+
+
+

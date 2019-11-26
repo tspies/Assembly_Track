@@ -1,0 +1,35 @@
+ We can solve this problem using the <gdb> debugging tool.
+
+Start debugging: gdb ./level13
+
+Now once we are in debugging mode we can set a break point at main:
+break main
+
+Now lets load the main function from our breakpoint onwards:
+x/20i main
+
+Now that we can see the whole main function, we know that the function uses the system function getuid(),
+and then we see the cmp instruction in line <main + 14>
+
+Now lets set a break point on that line:
+break *main + 14
+
+Now lets continue to run the function.
+It should break on the cmp command.
+
+Lets check the value of $eax:
+p $eax
+
+We should get: $1 = 2013
+
+We know from the exe output that uid needs to be 4242
+set $eax = 4242
+
+Check the value of $eax again:
+p $eax
+
+Now our uid is set to 4242
+Lets continue running the function:
+cont
+
+Your flag should be displayed.

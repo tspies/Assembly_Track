@@ -1,4 +1,0 @@
-In this level we search for files that are owned by user flag00(since flag00 has the rights to run getflag)
-we run find / -user "flag00" |& grep -v "Permission"
-we find a file called john in /usr/sbin
-we then run the contents of the file on the decrypter site http://dcode.fr/rot-cipher which reveals the password NOTTOOHARDHERE!

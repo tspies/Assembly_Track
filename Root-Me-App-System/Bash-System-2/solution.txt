@@ -1,5 +1,5 @@
 * Make a directory in tmp
-* Write you exploit script with just a system(cat /path/to/.passwd)
+* Write your exploit script with just a system(cat /path/to/.passwd)
 * Compile it in the directory in tmp and call it `ls`
 * Add the path of your directory in tmp to $PATh variable
 * Call ./ch12

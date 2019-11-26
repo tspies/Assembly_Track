@@ -1,0 +1,3 @@
+* We looked around the files and finally find a file called passwd we has encrypted text which we assume is the password.
+* We run it on john the ripper software which decrypts it and reveals the password abcdefg : (flag01)
+

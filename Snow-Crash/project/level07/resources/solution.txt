@@ -1,0 +1,2 @@
+* Set lognam as "$LOGNAME:'&&getflag'"
+* The run the executable
