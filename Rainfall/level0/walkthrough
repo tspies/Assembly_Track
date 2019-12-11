@@ -1,0 +1,38 @@
+*** LEVEL0 SOLUTION ***
+*** Please note all text inside back-ticks (``) are commands.
+*** Enter these command on the command line
+    
+
+# This level was solved  using <gdb> debugger.
+# I started out by analysing what argument the executable could take in.
+  * Every input resulted in 'No!'
+  * No buffer overflow vulnerability seemed to be preset.
+
+# I used gdb and analysed the main function.
+  `gdb ./level1`
+  `disas main`
+
+  --------------------------------------------------
+=> 0x08048ed4 <+20>:	call   0x8049710 <atoi> <=
+   0x08048ed9 <+25>:	cmp    $0x1a7,%eax
+   0x08048ede <+30>:	jne    0x8048f58 <main+152>
+  --------------------------------------------------
+  * I noticed it was using the <atoi> function on the argument passed to the program.
+
+
+# I then noticed that it was comparing the result of <atoi> to the hex value 0x1a7
+  --------------------------------------------------
+   0x08048ed4 <+20>:	call   0x8049710 <atoi> 
+=> 0x08048ed9 <+25>:	cmp    $0x1a7,%eax <=
+   0x08048ede <+30>:	jne    0x8048f58 <main+152>
+  --------------------------------------------------
+
+  * This value in decimal is 423. 
+  * I ran the executable with the number "423" as an argument outside of <gdb>.
+  `./level1 423`
+
+# A shell them opened and I navigated to the next level .pass file.
+  `cd /home/user/level1`
+  `cat .pass`
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  * The flag in then displayed.
